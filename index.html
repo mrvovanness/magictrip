@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="magictrip">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  </head>
+
+  <body ng-controller="ToursController">
+    <h1>Magic Trip</h1>
+
+    <h3>Add tour</h3>
+    <form>
+      <label>Title</label>
+      <input ng-model="newTour.title">
+      <label>Text</label>
+      <input ng-model="newTour.text">
+      <label>Price</label>
+      <input ng-model="newTour.price">
+      <label>Country</label>
+      <input ng-model="newTour.country">
+      <button ng-click="addTour()">Add Tour</button>
+    </form>
+
+    <div class="well" ng-repeat="tour in tours">
+      <div ng-show="tour.state=='view'">
+        <h3>{{tour.title}} <span class="badge">{{tour.price}}</span></h3>
+        <p>{{tour.text}}</p>
+        <b>Country: {{tour.country}}</b><br>
+        <button ng-click="editTour(tour)">Edit</button>
+        <button ng-click="removeTour(tour)">Remove</button>
+      </div>
+
+      <div ng-show="tour.state=='edit'">
+        <input ng-model="tour.title">
+        <input ng-model="tour.country">
+        <input ng-model="tour.text">
+        <input ng-model="tour.price">
+        <button ng-click="saveTour(tour)">Save</button>
+        <button ng-click="cancelEditing(tour)">Cancel</button>
+      </div>
+
+    </div>
+    <script src="tours_controller.js" type="text/javascript"></script>
+  </body>
+
+</html>
