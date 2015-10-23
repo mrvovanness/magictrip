@@ -1,0 +1,18 @@
+<form>
+  <label>Filter by country</label>
+  <select ng-model="countryFilter">
+    <option value="">All countries</option>
+    <option ng-repeat="country in countries" value="{{country.name}}">
+      {{country.name}}
+    </option>
+  </select>
+</form>
+
+<div class="well" ng-repeat="tour in tours | filter:{'country': countryFilter}">
+  <h3>
+    <a ng-href="/tours/{{tour.slug}}">{{tour.title}}</a>
+    <span class="badge">{{tour.price}}</span>
+  </h3>
+  <p>{{tour.text | limitTo: 15}}</p>
+  <b>Country: {{tour.country}}</b><br>
+</div>

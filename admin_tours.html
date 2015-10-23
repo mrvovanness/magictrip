@@ -1,0 +1,34 @@
+<h3>Add tour</h3>
+<form>
+  <label>Title</label>
+  <input ng-model="newTour.title">
+  <label>Text</label>
+  <input ng-model="newTour.text">
+  <label>Price</label>
+  <input ng-model="newTour.price">
+  <label>Country</label>
+  <input ng-model="newTour.country">
+  <button ng-click="addTour()">Add Tour</button>
+</form>
+
+<a ng-href="/admin/countries">Countries Administration</a>
+
+<div class="well" ng-repeat="tour in tours">
+  <div ng-show="tour.state=='view'">
+    <h3>{{tour.title}} <span class="badge">{{tour.price}}</span></h3>
+    <p>{{tour.text}}</p>
+    <b>Country: {{tour.country}}</b><br>
+    <button ng-click="editTour(tour)">Edit</button>
+    <button ng-click="removeTour($index)">Remove</button>
+  </div>
+
+  <div ng-show="tour.state=='edit'">
+    <input ng-model="tour.title">
+    <input ng-model="tour.country">
+    <input ng-model="tour.text">
+    <input ng-model="tour.price">
+    <button ng-click="saveTour(tour)">Save</button>
+    <button ng-click="cancelEditing(tour)">Cancel</button>
+  </div>
+
+</div>

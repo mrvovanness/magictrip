@@ -1,0 +1,24 @@
+<h3>Add Country</h3>
+
+<form>
+  <label>Name</label>
+  <input ng-model="newCountry.name">
+  <button ng-click="addCountry()">Add Country</button>
+</form>
+
+<a ng-href="/admin/tours">Tours Administration</a>
+
+<div class="well" ng-repeat="country in countries">
+  <div ng-show="country.state=='view'">
+    <h3>{{country.name}}</h3>
+    <button ng-click="editCountry(country)">Edit</button>
+    <button ng-click="removeCountry($index)">Remove</button>
+  </div>
+
+  <div ng-show="country.state=='edit'">
+    <input ng-model="country.name">
+    <button ng-click="saveCountry(country)">Save</button>
+    <button ng-click="cancelEditing(country)">Cancel</button>
+  </div>
+
+</div>
